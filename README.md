@@ -17,23 +17,6 @@ Add these (our your customized data) to the `/data/images` and `/data/tl_dataset
 
 As mentioned in the report, we further filter the provided dataset for duplicates. To filter the dataset, run the script `make_unique.py`.
 
-### Pyradiomics
-To retrieve train, validation and test set for the [pyradiomics](https://pyradiomics.readthedocs.io/en/latest/) features we provide the function `get_radiomics_dataset()` in `data.py`. The function returns both datasets as numpy arrays.
-```sh
-from data import get_radiomics_dataset
-train_data, train_labels, val_data, val_labels, test_data, test_labels = get_radiomics_dataset()
-```
-Add the pyradiomics dataset to `/data/radiomics`.
-
-### Images
-The image train, validation and test sets are provided as pytorch [ImageFolders](https://pytorch.org/vision/main/generated/torchvision.datasets.ImageFolder.html) through `get_img_dataset(transform=None)` in `data.py`. Note that, in order to incorporate data augmentation, you are able to pass a list of [transforms](https://pytorch.org/vision/0.9/transforms.html) to this function.
-
-```sh
-from data import get_img_dataset
-from torchvision import transforms
-transform = [transforms.RandomRotation(90), transforms.RandomHorizontalFlip()]
-train_dataset, val_dataset, test_dataset = get_img_dataset(transform)
-```
 ## Project3Lib
 This package includes our models, functions for loading and preprocessing data and for training and evaluating our models. They are called from the respective notebooks.
 To use the library in your code run, e.g.
